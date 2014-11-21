@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block html %}
+<html ng-app="todoApp">
+{%  endblock %}
+
+
+{%  block script_top %}
+
+
+    <script src="{{ url_for('static',filename='bower_components/custom/custom.js') }}">
+    </script>
+
+
+{% endblock %}
+
+
+{% block body %}
+<body ng-controller="todoCtrl">
+{% endblock %}
+
+{%  block header %}
+    <div class="page-header">
+        {% raw %}
+        <h1 align="center">{{todo.user}} To do List &af;
+            <span class="label-default label" ng-hide="incompleteCount()==0" ng-class="warningLevel()">
+            {{ incompleteCount() }}
+            </span>
+        </h1>
+
+        {%  endraw %}
+    </div>
+{%  endblock %}
+
+{%  block content %}
+    <div class="container">
+    <div class="panel">
+        <div class="input-group">
+            <input class="form-control" ng-model="actionText">
+            <span class="input-group-btn">
+                <button class="btn btn-default" ng-click="addnewItem(actionText)">Add</button>
+            </span>
+        </div>
+
+        <table class="table-striped table">
+
+            <thead>
+                <tr>
+                <th>Description</th>
+                <th>Done</th>
+            </tr>
+            </thead>
+
+            <tbody>
+                  {%  raw %}
+                  <tr ng-repeat='item in todo.items | visibleItems:visibleCompleted | orderBy:"action"'>
+                        <td>{{ item.action }}</td>
+                        <td><input type="checkbox" ng-model="item.done"></td>
+                        <td>{{ item.done }}</td>
+                  </tr>
+                  {% endraw %}
+
+            </tbody>
+        </table>
+        <hr>
+        <div class="checkbox-inline">
+            <label><input type="checkbox" ng-model="showCompleted">show Completed</label>
+        </div>
+
+        <div class="checkbox-inline">
+            <label><input type="checkbox" ng-model="visibleCompleted">Hide unCompleted</label>
+        </div>
+    </div>
+    </div>
+
+{% endblock %}
+

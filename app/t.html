@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+
+<html ng-app="todoApp">
+
+<head>
+<meta charset="utf-8">
+<title></title>
+
+
+
+<link rel= "stylesheet" href= "/static/bower_components/bootstrap/dist/css/bootstrap.min.css" >
+<link rel= "stylesheet" href= "/static/bower_components/bootstrap/dist/css/bootstrap-theme.css">
+<link rel= "stylesheet" href= "/static/bower_components/angular/angular-csp.css" >
+
+
+
+
+
+
+
+    <script>
+
+    var model = {
+        user: "Adam",
+        items: [{ action: "Buy Flowers", done: false },
+            { action: "Get Shoes", done: false },
+            { action: "Collect Tickets", done: true },
+            { action: "Call Joe", done: false }]
+    };
+
+    var todoApp = angular.module("todoApp",[]);
+    todoApp.controller("todoCtrl",function($scope){
+                $scope.todo = model;
+            }
+    );
+    </script>
+
+
+
+</head>
+
+
+<body ng-controller="todoCtrl">
+
+
+    
+    <div class="page-header">
+        
+
+        <span class="label label-default">{{todo.user}}</span>
+
+        
+    </div>
+
+
+    
+    <div class="container">
+    <div class="panel">
+        <div class="input-group">
+            <input class="form-control">
+            <span class="input-group-btn">
+                <button class="btn btn-default">Add</button>
+            </span>
+        </div>
+        <table class="table-striped table">
+
+            <thead>
+                <tr>
+                <th>Description</th>
+                <th>Done</th>
+            </tr>
+            </thead>
+
+            <tbody>
+
+
+
+
+
+            </tbody>
+        </table>
+    </div>
+    </div>
+
+
+    </div>
+    
+
+
+
+
+
+
+
+
+    
+    
+
+
+    
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment-with-langs.min.js"></script>
+<script>
+function flask_moment_render(elem) {
+    $(elem).text(eval('moment("' + $(elem).data('timestamp') + '").' + $(elem).data('format') + ';'));
+    $(elem).removeClass('flask-moment');
+}
+function flask_moment_render_all() {
+    $('.flask-moment').each(function() {
+        flask_moment_render(this);
+        if ($(this).data('refresh')) {
+            (function(elem, interval) { setInterval(function() { flask_moment_render(elem) }, interval); })(this, $(this).data('refresh'));
+        }
+    })
+}
+$(document).ready(function() {
+    flask_moment_render_all();
+});
+</script>
+    <script src="/static/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="/static/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/static/bower_components/angular/angular.min.js"></script>
+
+    
+</body>
+</html>

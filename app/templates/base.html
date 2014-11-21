@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+{%  block html %}
+<html>
+{% endblock %}
+<head>
+<meta charset="utf-8">
+<title>{% block title %}{% endblock %}</title>
+
+{% block stylesheet %}
+
+<link rel= "stylesheet" href= "{{ url_for('static', filename = 'bower_components/bootstrap/dist/css/bootstrap.min.css') }}" >
+<link rel= "stylesheet" href= "{{ url_for('static', filename = 'bower_components/bootstrap/dist/css/bootstrap-theme.css') }}">
+<link rel= "stylesheet" href= "{{ url_for('static', filename = 'bower_components/angular/angular-csp.css') }}" >
+<script src="{{ url_for('static', filename = 'bower_components/angular/angular.min.js') }}"></script>
+
+{% endblock %}
+
+{% block script_top %}
+{% endblock %}
+</head>
+
+{% block body %}
+<body>
+{%  endblock %}
+
+    {% block header %}
+        <div class="navbar navbar-inverse" role="navigation">
+	<div class="container">
+		<div class="navbar-header">
+			<button class="navbar-toggle" type="button" data="collapse"
+			data-target="navbar-collapse">
+				<span class="sr-only">Toggle</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+
+			</button>
+			<a class="navbar-brand" href="/">Flask</a>
+
+		</div>
+		<div class="navbar-collapse collapse">
+			<ul class="navbar-nav nav">
+				<li><a href="/">Home</a></li>
+			</ul>
+		</div>
+	</div>
+    </div>
+    {% endblock %}
+
+    {% block content %}
+    <div class="container">
+
+        {% for message in get_flashed_messages() %}
+        <div class= "alert alert-warning" >
+            <button type= "button" class= "close" data-dismiss= "alert" > &times; </button>
+            {{ message }}
+
+        </div>
+        {% endfor %}
+    </div>
+    {% endblock %}
+{#    #}
+{#    {% block inner_body %}#}
+{##}
+{#    {% block page_content %}{% endblock %}#}
+{##}
+{#    {% endblock %}#}
+
+
+    {% block footer %}
+    {% endblock %}
+
+
+    {% block scripts %}
+    {{ moment.include_moment() }}
+    <script src="{{ url_for('static', filename = 'bower_components/bootstrap/dist/js/bootstrap.js') }}"></script>
+    <script src="{{ url_for('static', filename = 'bower_components/jquery/dist/jquery.min.js') }}"></script>
+
+    {% endblock %}
+</body>
+</html>

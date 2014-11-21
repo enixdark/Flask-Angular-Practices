@@ -1,0 +1,41 @@
+{
+  "name": "static",
+  "version": "1.0.0",
+  "description": "?",
+  "authors": [
+    "cqshinn"
+  ],
+  "license": "GPLv3",
+  "private": true,
+  "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests",
+        "source",
+        "spec",
+        ".bowerrc",
+        ".gitignore",
+        ".jshintignore",
+        ".jshintrc",
+        ".bower.json",
+        "bower.json",
+        "gruntfile.js",
+        "package.json",
+        "README.md",
+        "MIT-LICENSE.txt",
+        "src/",
+        "src/*"
+    ],
+    "dependencies": {
+        "jquery": "~2.1.1"
+    },
+    "install" : {
+        "path"  : {
+            "js": "js/",
+            "css": "css/",
+            "font":"font/"
+        }
+    }
+}
